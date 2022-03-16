@@ -1,2 +1,2 @@
 # MEI
-Master's in Computer Engeneering
+Master's in Computer Engineering
