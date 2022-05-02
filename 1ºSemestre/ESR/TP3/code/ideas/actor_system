@@ -1,0 +1,32 @@
+Um streamer quando entra na network dá broadcast da sua posição.
+
+Os clients quando entram na rede vai conectar-se a um relay
+
+Os relays quando entram na rede vão-se conectar a diferentes relays. Vão ainda "conversar" entre si para criarem uma "rede"
+vá, uma "cache" com os caminhos entre si.
+
+
+Os clients conectam a um relay
+que está numa rede de relays
+Server conectado a ***UM** relay
+
+Então quando o client C1 quer stream de dados vai pedir ao server.
+Ou seja pede ao seu relay mais próximo e este possui informação acerca da rede, do caminho mais rápido para server
+
+caminho mais rápido = caminho com menos saltos
+
+A - B - C - D -> 4 saltos
+A - B - D -> 3 saltos
+
+O relay vai enviar o pedido para o server
+
+Server vai responder com os dados nessa direção.
+
+
+Se tivermos vários clientes na rede a receber stream e um novo conectar-se. 
+
+Este novo vai receber do início? 
+  (+ difícil de reduzir overload da rede visto que diferentes clients em diferentes pontos da stream)
+
+Ou vai continuar de onde estava o resto? 
+  (+ fácil de reduzir visto que diferentes clients estão no mesmo ponto)

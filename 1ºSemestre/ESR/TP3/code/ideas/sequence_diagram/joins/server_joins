@@ -1,0 +1,15 @@
+Server sends { Path: [] }
+    
+C1 receives { Path: [] }
+
+C1 sends { Path: [C1] }
+
+C2 receives { Path: [C1] }
+C4 receives { Path: [C1] }
+
+C2 sends { Path: [C1, C2] }
+C4 sends { Path: [C1, C4] }
+
+C3 receives { Path: [C1, C2] }
+C3 receives { Path: [C1, C4] }
+C5 receives { Path: [C1, C4] }

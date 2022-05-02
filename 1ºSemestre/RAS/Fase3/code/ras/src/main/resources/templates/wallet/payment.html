@@ -1,0 +1,221 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Adicionar Dinheiro - RASBet</title>
+
+  <div th:insert="shared/links"></div>
+  <link rel="stylesheet" th:href="@{/styles/payment.css}">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<div th:insert="shared/navbar"></div>
+
+<div class="container d-flex justify-content-center mt-5 mb-xl-5">
+  <div class="row g-3 mb-xl-5">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="accordion type" id="accordionExample">
+
+          <div class="card">
+            <div class="card-header p-0" id="headingTwo">
+              <h2 class="mb-0"> <button class="paypal btn btn-light inform btn-block text-left collapsed p-3 rounded-0 border-bottom-custom" type="button" data-toggle="collapse" data-target="#paypal" aria-expanded="false" aria-controls="paypal">
+                <div class="d-flex align-items-center justify-content-between"> <span>Paypal</span> <img src="https://i.imgur.com/7kQEsHU.png" width="30"> </div>
+              </button> </h2>
+            </div>
+            <div id="paypal" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+              <div class="card-body">
+                <label>Email</label>
+                <input type="text" class="inform form-control mb-3" placeholder="user@provider.com">
+
+                <label>Moeda</label>
+                <select id="paypalcoin" class="form-control">
+                  <option value="€" selected>Euros (€)</option>
+                  <option value="$">Dólares ($)</option>
+                  <option value="£">Libra Inglesa (£)</option>
+                </select>
+              </div>
+              <div class="p-3">
+                <label>Valor a pagar</label>
+                <div class="input-group mb-4">
+                  <div class="input-group-prepend">
+                    <span id="paypalcoinpay" class="input-group-text">€</span>
+                  </div>
+                  <input id="paypalvalue" class="form-control" type="number" th:placeholder="0">
+                </div>
+
+                <label>Valor que vai ser depositado</label>
+                <div class="input-group mb-4">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">€</span>
+                  </div>
+                  <input id="paypalfinal" class="form-control" type="number" readonly th:placeholder="0">
+                </div>
+
+                <button id="paypalgol" class="btn btn-primary btn-block free-button">Pagar Já!</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header p-0">
+              <h2 class="mb-0"> <button class="btn btn-light inform btn-block text-left p-3 rounded-0" data-toggle="collapse" data-target="#credit" aria-expanded="true" aria-controls="credit">
+                <div class="d-flex align-items-center justify-content-between"> <span>Cartão de Crédito</span>
+                  <div class="icons"> <img src="https://i.imgur.com/2ISgYja.png" width="30"> <img src="https://i.imgur.com/W1vtnOV.png" width="30"> <img src="https://i.imgur.com/35tC99g.png" width="30"> <img src="https://i.imgur.com/2ISgYja.png" width="30"> </div>
+                </div>
+              </button> </h2>
+            </div>
+            <div id="credit" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body payment-card-body"> <span class="font-weight-normal card-text">Número do Cartão</span>
+                <div class="input inform">
+                  <i class="material-icons">credit_card</i>
+                  <input type="text" class="inform form-control" placeholder="0000 0000 0000 0000">
+                </div>
+                <div class="row mt-3 mb-3">
+                  <div class="col-md-4"> <span class="font-weight-normal card-text">Validade</span>
+                    <div class="input inform">
+                      <i class="material-icons">event</i>
+                      <input type="text" class="inform form-control" placeholder="MM/YY">
+                    </div>
+                  </div>
+                  <div class="col-md-4"> <span class="font-weight-normal card-text">CVC/CVV</span>
+                    <div class="input inform">
+                      <i class="material-icons">lock</i>
+                      <input type="text" class="inform form-control" placeholder="000">
+                    </div>
+                  </div>
+                  <div class="col-md-4"> <span class="font-weight-normal card-text">Moeda</span>
+                    <div class="input inform">
+                      <i class="material-icons">payments</i>
+                      <select id="creditcoin" class="form-control wicon inform">
+                        <option value="€" selected>Euros (€)</option>
+                        <option value="$">Dólares ($)</option>
+                        <option value="£">Libra Inglesa (£)</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <span class="text-muted certificate-text"><i class="fa fa-lock"></i>Esta transação está segura através do uso de certificados SSL</span>
+                <div class="p-3">
+                  <label>Valor a pagar</label>
+                  <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                      <span id="creditcoinpay" class="input-group-text coinpay">€</span>
+                    </div>
+                    <input id="creditvalue" class="form-control" type="number" th:placeholder="0">
+                  </div>
+
+                  <label>Valor que vai ser depositado</label>
+                  <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">€</span>
+                    </div>
+                    <input id="creditfinal" class="form-control" type="number" readonly th:placeholder="0">
+                  </div>
+
+                  <button id="creditgol" class="btn btn-primary btn-block free-button">Pagar Já!</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header p-0" id="headingThree">
+              <h2 class="mb-0">
+                <button class="cardano btn btn-light inform btn-block text-left collapsed p-3 rounded-0 border-bottom-custom" type="button" data-toggle="collapse" data-target="#cardano" aria-expanded="false" aria-controls="cardano">
+                <div class="d-flex align-items-center justify-content-between">
+                  <span>Criptomoedas - Cardano</span>
+                  <img src="https://getcrypto.info/images/logos/cardano.png" width="30">
+                </div>
+              </button> </h2>
+            </div>
+            <div id="cardano" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+              <div class="card-body">
+                <div class="card">
+                  <img class="card-img-top" style="height: 20em; width: 20em" src="https://upload.wikimedia.org/wikipedia/commons/0/07/QR_CODE_2.png" alt="cardano address">
+                  <div class="card-body">
+                    <p class="card-text">Para depositar dinheiro por favor envie os fundos para o endereço apresentado.</p>
+                    <p><input class="form-control" style="width: 95%" type="text" disabled th:placeholder="addr1qxynwp2p9pwkxg7g55wc6wtng8zsmyl8uayx9fmkca8pnjre8achqukdcstl96lssa0mtfpcrufrjakhnr3nufw6lg3sptaq67"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div th:insert="shared/footer"></div>
+<div th:insert="shared/scripts"></div>
+
+<script>
+  // PAYPAL
+  function updatePaypalVal() {
+    const coinpay = $("#paypalcoinpay").text();
+    const value= $("#paypalvalue").val();
+    const paypalfinal = $("#paypalfinal");
+
+    switch (coinpay) {
+      case "€":
+        paypalfinal.val(Math.round( (value) * 100 ) / 100);
+        return
+      case "$":
+        paypalfinal.val(Math.round( (value * 0.88) * 100 ) / 100);
+        return
+      case "£":
+        paypalfinal.val(Math.round( (value * 1.20) * 100 ) / 100);
+        return
+    }
+  }
+
+  $("#paypalcoin").change(() => {
+    const coin = $("#paypalcoin").find(":selected").val();
+    $("#paypalcoinpay").text(coin);
+
+    updatePaypalVal()
+  });
+
+  $("#paypalvalue").on('input', updatePaypalVal);
+
+  $("#paypalgol").click(() => {
+    location.href = 'store?value=' + $("#paypalfinal").val();
+  })
+
+  // CREDIT CARD
+  function updateCreditVal() {
+    const coinpay = $("#creditcoinpay").text();
+    const value= $("#creditvalue").val();
+    const final = $("#creditfinal");
+
+    switch (coinpay) {
+      case "€":
+        final.val(Math.round( (value) * 100 ) / 100);
+        return
+      case "$":
+        final.val(Math.round( (value * 0.88) * 100 ) / 100);
+        return
+      case "£":
+        final.val(Math.round( (value * 1.20) * 100 ) / 100);
+        return
+    }
+  }
+
+  $("#creditcoin").change(() => {
+    const coin = $("#creditcoin").find(":selected").val();
+    $("#creditcoinpay").text(coin);
+
+    updateCreditVal()
+  });
+
+  $("#creditvalue").on('input', updateCreditVal);
+
+  $("#creditgol").click(() => {
+    location.href = 'store?value=' + $("#creditfinal").val();
+  })
+</script>
+
+</body>
+</html>

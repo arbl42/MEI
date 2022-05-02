@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nova Aposta - RASBet</title>
+    <div th:insert="shared/links"></div>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <div th:insert="shared/navbar"></div>
+
+    <div class="container my-lg-5">
+        <div th:if="${message}" th:text="${message}" th:class="${'mb-4 alert ' + alertClass}"></div>
+
+        <form action="#" th:action="@{/userBet}" th:object="${userBet}" method="post">
+            <input type="hidden" value="34657" th:field="*{houseBet.id}">
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-2">
+                        <input class="form-control" type="text" readonly
+                               th:placeholder="${houseBet.game.gameDate}"
+                        >
+                    </div>
+                    <div class="col-7">
+                        <input class="form-control" type="text" readonly
+                               th:placeholder="${houseBet.game.team1.name + ' vs ' + houseBet.game.team2.name}"
+                        >
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-2">
+                    <label for="price">Valor</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">€</span>
+                        </div>
+                        <input type="number" class="valor form-control" id="price" th:field="*{price}">
+                    </div>
+                </div>
+
+                <div class="form-group col-5">
+                    <label for="bet">Aposta</label>
+                    <select class="aposta form-control" id="bet" th:field="*{bet}">
+                        <option
+                                th:selected="${bet.equals('1')}"
+                                value="1"
+                                th:text="${'1 (' + houseBet.game.team1.name + ') @ ' + houseBet.oddWin1}"
+                                th:odd="${houseBet.oddWin1}"
+                        ></option>
+                        <option
+                                th:if="${houseBet.oddDraw != null}"
+                                th:selected="${bet.equals('X')}"
+                                value="X"
+                                th:text="${'X (Empate) @ ' + houseBet.oddDraw}"
+                                th:odd="${houseBet.oddDraw}"
+                        ></option>
+                        <option
+                                th:selected="${bet.equals('2')}"
+                                value="2"
+                                th:text="${'2 (' + houseBet.game.team2.name + ') @ ' + houseBet.oddWin2}"
+                                th:odd="${houseBet.oddWin2}"
+                        ></option>
+                    </select>
+                </div>
+
+                <div class="col-2">
+                    <label>Ganhos Possíveis</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">€</span>
+                        </div>
+                        <input class="possiveis form-control" type="number" readonly th:placeholder="0">
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Criar Aposta</button>
+        </form>
+    </div>
+
+    <div th:insert="shared/footer"></div>
+    <div th:insert="shared/scripts"></div>
+</body>
+
+<script>
+    function updateVal() {
+        const odd = $(".aposta option:selected").first().attr('odd');
+        const val = $(".valor").val();
+        $(".possiveis").attr("placeholder", Math.round(odd * val * 100) / 100);
+    }
+
+    $(".aposta").change(updateVal);
+    $(".valor").on('input', updateVal);
+</script>
+
+</html>

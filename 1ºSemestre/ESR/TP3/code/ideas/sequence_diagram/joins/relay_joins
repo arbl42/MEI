@@ -1,0 +1,11 @@
+./ott --relay ip_list_r1.json
+
+R1 parses his ip list.
+
+R1 boots and joins the network.
+
+R1 sends info to his peers authenticating.
+
+R1 sits in the "waiting" list until the next network synchronization
+
+Network synchronizes the changes and R1 is now part of the network.

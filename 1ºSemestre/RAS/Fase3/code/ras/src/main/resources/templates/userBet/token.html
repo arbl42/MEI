@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Token - RASBet</title>
+    <div th:insert="shared/links"></div>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <div th:insert="shared/navbar"></div>
+
+    <div class="container my-lg-5">
+        <div th:if="${message}" th:text="${message}" th:class="${'mb-4 alert ' + alertClass}"></div>
+
+        <div class="card text-center">
+            <div class="card-body">
+                <p class="card-text" th:text="${token}"></p>
+            </div>
+            <div class="card-footer text-muted">
+                Este token serve para poder redimir a sua aposta mais tarde. Guarde-o em segurança.
+            </div>
+        </div>
+
+    </div>
+
+    <div th:insert="shared/footer"></div>
+    <div th:insert="shared/scripts"></div>
+</body>
+
+</html>

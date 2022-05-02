@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Página Principal - RASBet</title>
+
+    <div th:insert="shared/links"></div>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<div th:insert="shared/navbar"></div>
+
+<div class="container my-lg-5">
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Username</th>
+        <th scope="col">Email</th>
+    </tr>
+    </thead>
+
+    <tbody th:each="user : ${users}">
+        <tr>
+            <th th:text="${user.id}" scope="row"></th>
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.email}"></td>
+        </tr>
+    </tbody>
+</table>
+
+</div>
+
+<div th:insert="shared/footer"></div>
+<div th:insert="shared/scripts"></div>
+
+</body>
+</html>

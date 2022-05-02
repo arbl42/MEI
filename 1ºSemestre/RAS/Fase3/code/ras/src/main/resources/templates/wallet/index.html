@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Carteira - RASBet</title>
+
+    <div th:insert="shared/links"></div>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<div th:insert="shared/navbar"></div>
+
+<div class="d-flex align-items-center flex-column mt-5">
+    <div><h2>Saldo na Carteira</h2></div>
+
+    <div class="card text-center mt-2" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${'€' + logged.get().wallet}"></h5>
+            <a th:href="@{/wallet/add}" class="card-link">Carregar</a>
+            <a th:href="@{/wallet/remove}" class="card-link">Levantar</a>
+        </div>
+    </div>
+</div>
+
+<div th:insert="shared/footer"></div>
+<div th:insert="shared/scripts"></div>
+
+</body>
+</html>

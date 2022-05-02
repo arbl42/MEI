@@ -1,0 +1,10 @@
+1: Split the system into 3 actors.
+        - System
+        - Relay    
+        - Client
+        
+2: (Some) routers can use FFMPEG. (Let's just assume all we have possess the ability to do so)
+   https://hackaday.io/project/167224-router-becomes-video-recorder-for-ip-cameras
+
+3: FFMPEG pode ser usado para retransmitir ffmpeg streams (tcp/udp)
+   https://lists.ffmpeg.org/pipermail/ffmpeg-user/2012-August/009203.html

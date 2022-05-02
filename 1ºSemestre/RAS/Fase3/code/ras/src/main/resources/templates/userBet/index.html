@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Minhas Apostas - RASBet</title>
+
+    <div th:insert="shared/links"></div>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<div th:insert="shared/navbar"></div>
+
+<div class="container my-lg-5">
+
+<div th:if="${message}" th:text="${message}" th:class="${'mb-4 alert ' + alertClass}"></div>
+
+<h2>As suas Apostas <a class="btn btn-info ml-2 mb-sm-2" th:href="@{/houseBet}">+</a></h2>
+
+<h4 class="mt-5 mb-3">Apostas em Aberto</h4>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Desporto</th>
+        <th scope="col">Data</th>
+        <th scope="col">Jogo</th>
+        <th scope="col">Aposta</th>
+        <th scope="col">Ganhos Potenciais</th>
+    </tr>
+    </thead>
+
+    <tbody th:if="${openBets.isEmpty()}">
+    <tr>
+        <td colspan="5">Sem Apostas Registadas</td>
+    </tr>
+    </tbody>
+
+    <tbody th:if="${!openBets.isEmpty()}" th:each="bet : ${openBets}">
+    <tr>
+        <td th:switch="${bet.houseBet.game.sport.name}" style="width: 10em;">
+            <div th:case="'Futebol'">
+                <span><i class="material-icons" style="vertical-align: bottom">sports_soccer</i> Futebol</span>
+            </div>
+            <div th:case="'Basquetebol'">
+                <span><i class="material-icons" style="vertical-align: bottom">sports_basketball</i> Basquetebol</span>
+            </div>
+            <div th:case="'Golfe'">
+                <span><i class="material-icons" style="vertical-align: bottom">golf_course</i> Golfe</span>
+            </div>
+            <div th:case="'Ténis'">
+                <span><i class="material-icons" style="vertical-align: bottom">sports_tennis</i> Ténis</span>
+            </div>
+        </td>
+
+        <td th:text="${bet.houseBet.game.gameDate}" style="width: 15em;"></td>
+        <td th:text="${bet.houseBet.game.team1.name + ' vs ' + bet.houseBet.game.team2.name}" style="width: 25em;"></td>
+
+        <th:block th:switch="${bet.bet}">
+            <th:block th:case="'1'">
+                <td th:text="${'€' + bet.price + ' (' + bet.houseBet.game.team1.name + ' @ ' + bet.houseBet.oddWin1 + ')'}" style="width: 20em;"></td>
+                <td th:text="${'€' + T(java.lang.String).format('%.2f', bet.price * bet.houseBet.oddWin1)}" style="width: 20em;"></td>
+            </th:block>
+            <th:block th:case="'X'">
+                <td th:text="${'€' + bet.price + ' (Empate @ ' + bet.houseBet.oddDraw + ')'}" style="width: 20em;"></td>
+                <td th:text="${'€' + T(java.lang.String).format('%.2f', bet.price * bet.houseBet.oddDraw)}" style="width: 20em;"></td>
+            </th:block>
+            <th:block th:case="'2'">
+                <td th:text="${'€' + bet.price + ' (' + bet.houseBet.game.team2.name + ' @ ' + bet.houseBet.oddWin2 + ')'}" style="width: 20em;"></td>
+                <td th:text="${'€' + T(java.lang.String).format('%.2f', bet.price * bet.houseBet.oddWin2)}" style="width: 20em;"></td>
+            </th:block>
+        </th:block>
+
+    </tr>
+    </tbody>
+</table>
+
+<h4 class="mt-5 mb-3">Apostas Encerradas</h4>
+
+<table class="table table-striped mb-lg-5">
+    <thead>
+    <tr>
+        <th scope="col">Desporto</th>
+        <th scope="col">Data</th>
+        <th scope="col">Jogo</th>
+        <th scope="col">Aposta</th>
+        <th scope="col">Ganhos</th>
+    </tr>
+    </thead>
+
+    <tbody th:if="${closedBets.isEmpty()}">
+    <tr>
+        <td colspan="5">Sem Apostas Registadas</td>
+    </tr>
+    </tbody>
+
+    <tbody th:if="${!closedBets.isEmpty()}" th:each="bet : ${closedBets}">
+    <tr th:classappend="${bet.bet.equals(bet.houseBet.game.gameResult)} ? 'table-success' : 'table-danger'">
+        <td th:switch="${bet.houseBet.game.sport.name}" style="width: 10em;">
+            <div th:case="'Futebol'">
+                <span><i class="material-icons" style="vertical-align: bottom">sports_soccer</i> Futebol</span>
+            </div>
+            <div th:case="'Basquetebol'">
+                <span><i class="material-icons" style="vertical-align: bottom">sports_basketball</i> Basquetebol</span>
+            </div>
+            <div th:case="'Golfe'">
+                <span><i class="material-icons" style="vertical-align: bottom">golf_course</i> Golfe</span>
+            </div>
+            <div th:case="'Ténis'">
+                <span><i class="material-icons" style="vertical-align: bottom">sports_tennis</i> Ténis</span>
+            </div>
+        </td>
+
+        <td th:text="${bet.houseBet.game.gameDate}" style="width: 15em;"></td>
+        <td th:text="${bet.houseBet.game.team1.name + ' vs ' + bet.houseBet.game.team2.name}" style="width: 25em;"></td>
+
+        <th:block th:switch="${bet.bet}">
+            <th:block th:case="'1'">
+                <td th:text="${'€' + bet.price + ' (' + bet.houseBet.game.team1.name + ' @ ' + bet.houseBet.oddWin1 + ')'}" style="width: 20em;"></td>
+                <td th:text="${bet.bet.equals(bet.houseBet.game.gameResult) ? '€' + T(java.lang.String).format('%.2f', bet.price * bet.houseBet.oddWin1) : 'Perdida'}" style="width: 20em;"></td>
+            </th:block>
+            <th:block th:case="'X'">
+                <td th:text="${'€' + bet.price + ' (Empate @ ' + bet.houseBet.oddDraw + ')'}" style="width: 20em;"></td>
+                <td th:text="${bet.bet.equals(bet.houseBet.game.gameResult) ? '€' + T(java.lang.String).format('%.2f', bet.price * bet.houseBet.oddDraw) : 'Perdida'}" style="width: 20em;"></td>
+            </th:block>
+            <th:block th:case="'2'">
+                <td th:text="${'€' + bet.price + ' (' + bet.houseBet.game.team2.name + ' @ ' + bet.houseBet.oddWin2 + ')'}" style="width: 20em;"></td>
+                <td th:text="${bet.bet.equals(bet.houseBet.game.gameResult) ? '€' + T(java.lang.String).format('%.2f', bet.price * bet.houseBet.oddWin2) : 'Perdida'}" style="width: 20em;"></td>
+            </th:block>
+        </th:block>
+    </tr>
+    </tbody>
+</table>
+
+</div>
+
+<div th:insert="shared/footer"></div>
+<div th:insert="shared/scripts"></div>
+
+</body>
+</html>

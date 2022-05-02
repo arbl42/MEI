@@ -1,0 +1,51 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">RASBet - Plataforma de Apostas Desportivas</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li th:if="${logged.isEmpty()}" class="nav-item active"><a class="nav-link" th:href="@{/user/create}">Entrar/Registo</a></li>
+                <li th:if="${logged.isPresent()}" class="nav-item active"><a class="nav-link" th:href="@{/user/edit}" th:text="${logged.get().getUsername()}"></a></li>
+
+                <li th:if="${logged.isPresent()}" class="nav-item">
+                    <a class="nav-link" th:href="@{/userBet}">Minhas Apostas</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Novas Apostas
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" th:href="@{/houseBet}">
+                            <span><i class="material-icons" style="vertical-align: bottom">emoji_events</i> Todos</span>
+                        </a>
+                        <a class="dropdown-item" th:href="@{/houseBet?sport=Futebol}">
+                            <span><i class="material-icons" style="vertical-align: bottom">sports_soccer</i> Futebol</span>
+                        </a>
+                        <a class="dropdown-item" th:href="@{/houseBet?sport=Basquetebol}">
+                            <span><i class="material-icons" style="vertical-align: bottom">sports_basketball</i> Basquetebol</span>
+                        </a>
+                        <a class="dropdown-item" th:href="@{/houseBet?sport=Golfe}">
+                            <span><i class="material-icons" style="vertical-align: bottom">golf_course</i> Golfe</span>
+                        </a>
+                        <a class="dropdown-item" th:href="@{/houseBet?sport=Ténis}">
+                            <span><i class="material-icons" style="vertical-align: bottom">sports_tennis</i> Ténis</span>
+                        </a>
+                    </div>
+                </li>
+
+                <li th:if="${logged.isPresent()}" class="nav-item">
+                    <a class="nav-link" th:href="@{/wallet}">
+                        <i class="material-icons" style="vertical-align: bottom">account_balance_wallet</i>
+                        €<span th:text="${logged.get().getWallet()}"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

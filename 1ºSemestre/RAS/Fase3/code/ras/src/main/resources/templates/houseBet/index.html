@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Apostas - RASBet</title>
+
+    <div th:insert="shared/links"></div>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<div th:insert="shared/navbar"></div>
+
+<div class="container my-lg-5">
+
+    <h2>Apostas <span th:if="${!sport.equals('')}" th:text="${'em ' + sport}"></span></h2>
+
+    <table class="table table-striped my-5">
+        <thead>
+        <tr>
+            <th scope="col">Desporto</e></th>
+            <th scope="col">Data</th>
+            <th scope="col">Jogo</th>
+            <th scope="col">Odd 1X2</th>
+        </tr>
+        </thead>
+
+        <tbody th:if="${houseBets.isEmpty()}">
+        <tr>
+            <td colspan="4">Sem Apostas em Aberto</td>
+        </tr>
+        </tbody>
+
+        <tbody th:if="${!houseBets.isEmpty()}" th:each="bet : ${houseBets}">
+        <tr>
+            <td th:switch="${bet.game.sport.name}">
+                <div th:case="'Futebol'">
+                    <span><i class="material-icons" style="vertical-align: bottom">sports_soccer</i> Futebol</span>
+                </div>
+                <div th:case="'Basquetebol'">
+                    <span><i class="material-icons" style="vertical-align: bottom">sports_basketball</i> Basquetebol</span>
+                </div>
+                <div th:case="'Golfe'">
+                    <span><i class="material-icons" style="vertical-align: bottom">golf_course</i> Golfe</span>
+                </div>
+                <div th:case="'Ténis'">
+                    <span><i class="material-icons" style="vertical-align: bottom">sports_tennis</i> Ténis</span>
+                </div>
+            </td>
+
+            <td th:text="${bet.game.gameDate}"></td>
+            <td th:text="${bet.game.team1.name + ' vs ' + bet.game.team2.name}"></td>
+            <td>
+                <div class="btn-group" role="group">
+                    <a
+                            type="button" style="width: 4em" class="btn btn-outline-primary"
+                            th:text="${bet.oddWin1}" th:href="@{'/userBet/create?houseBet=' + ${bet.id} + '&bet=1'}">
+                    </a>
+                    <a
+                            type="button" style="width: 4em" class="btn btn-outline-primary"
+                            th:classappend="${bet.oddDraw == null ? 'disabled' : ''}"
+                            th:text="${bet.oddDraw}" th:href="@{'/userBet/create?houseBet=' + ${bet.id} + '&bet=X'}">
+                    </a>
+                    <a
+                            type="button" style="width: 4em" class="btn btn-outline-primary"
+                            th:text="${bet.oddWin2}" th:href="@{'/userBet/create?houseBet=' + ${bet.id} + '&bet=2'}">
+                    </a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<div th:insert="shared/footer"></div>
+<div th:insert="shared/scripts"></div>
+
+</body>
+</html>
