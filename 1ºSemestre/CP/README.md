@@ -10,6 +10,6 @@
  * 13.5/20
 
 ### Autores
- * Marco Pereira([@pereiramarco])(https://github.com/pereiramarco)
+ * Marco Pereira([@pereiramarco](https://github.com/pereiramarco))
  * Ariana Lousada([@AITK42](https://github.com/AITK42))
  
