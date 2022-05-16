@@ -2,7 +2,7 @@
 
 ## Authors
  * Ariana Lousada([@AITK42](https://github.com/AITK42))
- * Ana Ribeiro([@AnaPaulaMR])(https://github.com/AnaPaulaMR)
+ * Ana Ribeiro([@AnaPaulaMR](https://github.com/AnaPaulaMR)
 
 #### Classification
  * - 
