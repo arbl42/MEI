@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_2.dtd'>
+<nta>
+	<declaration>// Place global declarations here.
+clock x, y, z;
+chan detected, returned, s1changed, s2changed;
+</declaration>
+	<template>
+		<name x="5" y="5">Sensor</name>
+		<declaration>// Place local declarations here.</declaration>
+		<location id="id0" x="-178" y="-34">
+			<name x="-212" y="-42">On</name>
+		</location>
+		<location id="id1" x="144" y="-34">
+			<name x="161" y="-42">Off</name>
+		</location>
+		<location id="id2" x="-8" y="-34">
+			<label kind="invariant" x="-25" y="-17">z &lt;= 30</label>
+		</location>
+		<location id="id3" x="-7" y="35">
+			<name x="-17" y="51">Car</name>
+			<committed/>
+		</location>
+		<init ref="id0"/>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="-136" y="8">detected!</label>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id1"/>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id0"/>
+			<nail x="-85" y="-102"/>
+		</transition>
+		<transition>
+			<source ref="id1"/>
+			<target ref="id2"/>
+			<label kind="synchronisation" x="34" y="-127">returned?</label>
+			<label kind="assignment" x="51" y="-76">z := 0</label>
+			<nail x="68" y="-102"/>
+		</transition>
+	</template>
+	<template>
+		<name>S1</name>
+		<location id="id4" x="263" y="-17">
+			<name x="280" y="-34">Red</name>
+		</location>
+		<location id="id5" x="-246" y="-17">
+			<name x="-306" y="-34">Green</name>
+		</location>
+		<location id="id6" x="8" y="-17">
+			<name x="-8" y="-59">Yellow</name>
+			<label kind="invariant" x="-2" y="0">x &lt;= 5</label>
+		</location>
+		<location id="id7" x="-119" y="-17">
+			<label kind="invariant" x="-129" y="0">x &lt;= 1</label>
+		</location>
+		<location id="id8" x="136" y="-17">
+			<label kind="invariant" x="126" y="0">x &lt;= 1</label>
+		</location>
+		<location id="id9" x="8" y="127">
+			<label kind="invariant" x="-2" y="144">x &lt;= 1</label>
+		</location>
+		<init ref="id5"/>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id5"/>
+			<label kind="synchronisation" x="-170" y="59">returned!</label>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id9"/>
+			<label kind="synchronisation" x="136" y="59">s2changed?</label>
+			<label kind="assignment" x="161" y="76">x:=0</label>
+		</transition>
+		<transition>
+			<source ref="id8"/>
+			<target ref="id4"/>
+			<label kind="synchronisation" x="161" y="-93">s1changed!</label>
+			<nail x="195" y="-68"/>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id8"/>
+			<label kind="assignment" x="59" y="-51">x:=0</label>
+			<nail x="68" y="-68"/>
+		</transition>
+		<transition>
+			<source ref="id7"/>
+			<target ref="id6"/>
+			<label kind="assignment" x="-68" y="-51">x:=0</label>
+			<nail x="-56" y="-68"/>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id7"/>
+			<label kind="synchronisation" x="-212" y="-93">detected?</label>
+			<label kind="assignment" x="-195" y="-51">x:=0</label>
+			<nail x="-178" y="-68"/>
+		</transition>
+	</template>
+	<template>
+		<name>S2</name>
+		<location id="id10" x="-510" y="-552">
+			<label kind="invariant" x="-520" y="-535">y &lt;= 1</label>
+		</location>
+		<location id="id11" x="-764" y="-696">
+			<name x="-807" y="-714">Red</name>
+		</location>
+		<location id="id12" x="-263" y="-697">
+			<name x="-246" y="-714">Green</name>
+			<label kind="invariant" x="-246" y="-697">y &lt;= 30</label>
+		</location>
+		<location id="id13" x="-391" y="-697">
+			<label kind="invariant" x="-401" y="-680">y &lt;= 1</label>
+		</location>
+		<location id="id14" x="-510" y="-697">
+			<name x="-527" y="-739">Yellow</name>
+			<label kind="invariant" x="-520" y="-680">y &lt;= 5</label>
+		</location>
+		<location id="id15" x="-637" y="-697">
+			<label kind="invariant" x="-647" y="-680">y &lt;= 1</label>
+		</location>
+		<init ref="id11"/>
+		<transition>
+			<source ref="id11"/>
+			<target ref="id10"/>
+			<label kind="synchronisation" x="-714" y="-620">s1changed?</label>
+			<label kind="assignment" x="-688" y="-603">y:=0</label>
+		</transition>
+		<transition>
+			<source ref="id10"/>
+			<target ref="id12"/>
+			<label kind="assignment" x="-382" y="-620">y:=0</label>
+		</transition>
+		<transition>
+			<source ref="id12"/>
+			<target ref="id13"/>
+			<label kind="assignment" x="-340" y="-739">y:=0</label>
+			<nail x="-323" y="-748"/>
+		</transition>
+		<transition>
+			<source ref="id13"/>
+			<target ref="id14"/>
+			<label kind="assignment" x="-467" y="-739">y:=0</label>
+			<nail x="-450" y="-748"/>
+		</transition>
+		<transition>
+			<source ref="id14"/>
+			<target ref="id15"/>
+			<label kind="assignment" x="-586" y="-739">y:=0</label>
+			<nail x="-569" y="-748"/>
+		</transition>
+		<transition>
+			<source ref="id15"/>
+			<target ref="id11"/>
+			<label kind="synchronisation" x="-731" y="-765">s2changed!</label>
+			<nail x="-697" y="-748"/>
+		</transition>
+	</template>
+	<system>system Sensor, S1, S2;</system>
+	<queries>
+		<query>
+			<formula>A[](S1.Red imply not S2.Red)</formula>
+			<comment>8) S1 and S2 are never Red simultaneously.</comment>
+		</query>
+		<query>
+			<formula>S2.Yellow --&gt; S2.Red</formula>
+			<comment>7) If S2 is yellow then eventually it will turn Red</comment>
+		</query>
+		<query>
+			<formula>S1.Yellow --&gt; S1.Red</formula>
+			<comment>6) If S1 is yellow then eventually it will turn Red</comment>
+		</query>
+		<query>
+			<formula>Sensor.Car --&gt; S2.Green</formula>
+			<comment>5) If there are cars waiting they will eventually have green light.</comment>
+		</query>
+		<query>
+			<formula>A[](S1.Green imply not S2.Green)</formula>
+			<comment>4) The minor-road and major-road lights cannot be green at the same time.</comment>
+		</query>
+		<query>
+			<formula>A[](not deadlock)</formula>
+			<comment>3) The system never enters in a deadlock state.</comment>
+		</query>
+		<query>
+			<formula>E&lt;&gt;(S1.Red)</formula>
+			<comment>2) The major-road light can go red.</comment>
+		</query>
+		<query>
+			<formula>E&lt;&gt;(S2.Green)</formula>
+			<comment>1) The minor-road light can go green.</comment>
+		</query>
+	</queries>
+</nta>

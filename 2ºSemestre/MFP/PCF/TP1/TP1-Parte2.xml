@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_2.dtd'>
+<nta>
+	<declaration>// Place global declarations here.
+clock x, y;
+chan s1detected, s2detected, s1returned, s2returned, s1changed, s2changed;
+int[0, 2] TL1, TL2;</declaration>
+	<template>
+		<name x="5" y="5">Sensor1</name>
+		<declaration>// Place local declarations here.</declaration>
+		<location id="id0" x="-858" y="-901">
+			<name x="-875" y="-943">Low</name>
+		</location>
+		<location id="id1" x="-1028" y="-901">
+			<name x="-1088" y="-909">None</name>
+		</location>
+		<location id="id2" x="-697" y="-901">
+			<name x="-680" y="-909">High</name>
+		</location>
+		<location id="id3" x="-943" y="-901">
+			<name x="-953" y="-935">Car</name>
+			<committed/>
+		</location>
+		<init ref="id1"/>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id2"/>
+			<label kind="synchronisation" x="-620" y="-918">s1detected!</label>
+			<nail x="-697" y="-841"/>
+			<nail x="-620" y="-901"/>
+			<nail x="-697" y="-960"/>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id0"/>
+		</transition>
+		<transition>
+			<source ref="id1"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="-986" y="-842">s1detected!</label>
+			<label kind="assignment" x="-994" y="-825">TL1 := TL1 + 1</label>
+			<nail x="-943" y="-842"/>
+		</transition>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id2"/>
+			<label kind="synchronisation" x="-808" y="-842">s1detected!</label>
+			<label kind="assignment" x="-816" y="-825">TL1 := TL1 + 1</label>
+			<nail x="-774" y="-842"/>
+		</transition>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id1"/>
+			<label kind="synchronisation" x="-977" y="-1003">s1returned?</label>
+			<label kind="assignment" x="-986" y="-986">TL1 := TL1 - 1</label>
+			<nail x="-943" y="-960"/>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id0"/>
+			<label kind="synchronisation" x="-808" y="-1003">s1returned?</label>
+			<label kind="assignment" x="-816" y="-986">TL1 := TL1 - 1</label>
+			<nail x="-774" y="-960"/>
+		</transition>
+	</template>
+	<template>
+		<name>Sensor2</name>
+		<location id="id4" x="-2116" y="-1989">
+			<name x="-2176" y="-1997">None</name>
+		</location>
+		<location id="id5" x="-1785" y="-1989">
+			<name x="-1768" y="-1997">High</name>
+		</location>
+		<location id="id6" x="-1946" y="-1989">
+			<name x="-1963" y="-2031">Low</name>
+		</location>
+		<location id="id7" x="-2031" y="-1989">
+			<name x="-2041" y="-2023">Car</name>
+			<committed/>
+		</location>
+		<init ref="id4"/>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id5"/>
+			<label kind="synchronisation" x="-1700" y="-2006">s2detected!</label>
+			<nail x="-1785" y="-1929"/>
+			<nail x="-1700" y="-1989"/>
+			<nail x="-1785" y="-2057"/>
+		</transition>
+		<transition>
+			<source ref="id7"/>
+			<target ref="id6"/>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id7"/>
+			<label kind="synchronisation" x="-2074" y="-1930">s2detected!</label>
+			<label kind="assignment" x="-2082" y="-1913">TL2 := TL2 + 1</label>
+			<nail x="-2031" y="-1930"/>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id5"/>
+			<label kind="synchronisation" x="-1886" y="-1930">s2detected!</label>
+			<label kind="assignment" x="-1896" y="-1913">TL2 := TL2 + 1</label>
+			<nail x="-1862" y="-1930"/>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id4"/>
+			<label kind="synchronisation" x="-2065" y="-2099">s2returned?</label>
+			<label kind="assignment" x="-2082" y="-2082">TL2 := TL2 - 1</label>
+			<nail x="-2031" y="-2057"/>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id6"/>
+			<label kind="synchronisation" x="-1896" y="-2099">s2returned?</label>
+			<label kind="assignment" x="-1904" y="-2082">TL2 := TL2 - 1</label>
+			<nail x="-1862" y="-2057"/>
+		</transition>
+	</template>
+	<template>
+		<name>S1</name>
+		<location id="id8" x="-858" y="-1181">
+			<name x="-841" y="-1198">Red</name>
+		</location>
+		<location id="id9" x="-1367" y="-1181">
+			<name x="-1427" y="-1198">Green</name>
+		</location>
+		<location id="id10" x="-1113" y="-1181">
+			<name x="-1129" y="-1223">Yellow</name>
+			<label kind="invariant" x="-1123" y="-1164">x &lt;= 5</label>
+		</location>
+		<location id="id11" x="-1240" y="-1181">
+			<label kind="invariant" x="-1250" y="-1164">x &lt;= 31</label>
+		</location>
+		<location id="id12" x="-985" y="-1181">
+			<label kind="invariant" x="-995" y="-1164">x &lt;= 1</label>
+		</location>
+		<location id="id13" x="-1113" y="-1037">
+			<label kind="invariant" x="-1129" y="-1020">x &lt;= 1</label>
+		</location>
+		<init ref="id9"/>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id9"/>
+			<label kind="guard" x="-1521" y="-1190">TL1 &gt; 0</label>
+			<label kind="synchronisation" x="-1529" y="-1206">s1returned!</label>
+			<nail x="-1367" y="-1113"/>
+			<nail x="-1469" y="-1181"/>
+			<nail x="-1367" y="-1249"/>
+		</transition>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id9"/>
+			<label kind="synchronisation" x="-1758" y="-1206">s1detected?</label>
+			<nail x="-1366" y="-1003"/>
+			<nail x="-1681" y="-1181"/>
+			<nail x="-1366" y="-1359"/>
+		</transition>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id9"/>
+			<label kind="guard" x="-1632" y="-1190">TL1 &gt; TL2</label>
+			<label kind="synchronisation" x="-1640" y="-1206">s2detected?</label>
+			<nail x="-1367" y="-1054"/>
+			<nail x="-1563" y="-1181"/>
+			<nail x="-1367" y="-1308"/>
+		</transition>
+		<transition>
+			<source ref="id13"/>
+			<target ref="id9"/>
+			<label kind="synchronisation" x="-1308" y="-1105">s1returned!</label>
+			<label kind="assignment" x="-1282" y="-1088">x:=0</label>
+		</transition>
+		<transition>
+			<source ref="id8"/>
+			<target ref="id13"/>
+			<label kind="synchronisation" x="-985" y="-1105">s2changed?</label>
+			<label kind="assignment" x="-960" y="-1088">x:=0</label>
+		</transition>
+		<transition>
+			<source ref="id12"/>
+			<target ref="id8"/>
+			<label kind="synchronisation" x="-968" y="-1249">s1changed!</label>
+			<nail x="-926" y="-1232"/>
+		</transition>
+		<transition>
+			<source ref="id10"/>
+			<target ref="id12"/>
+			<label kind="assignment" x="-1062" y="-1215">x:=0</label>
+			<nail x="-1053" y="-1232"/>
+		</transition>
+		<transition>
+			<source ref="id11"/>
+			<target ref="id10"/>
+			<label kind="assignment" x="-1189" y="-1215">x:=0</label>
+			<nail x="-1177" y="-1232"/>
+		</transition>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id11"/>
+			<label kind="guard" x="-1333" y="-1249">TL1 &lt;= TL2</label>
+			<label kind="synchronisation" x="-1333" y="-1266">s2detected?</label>
+			<label kind="assignment" x="-1316" y="-1215">x:=0</label>
+			<nail x="-1299" y="-1232"/>
+		</transition>
+	</template>
+	<template>
+		<name>S2</name>
+		<location id="id14" x="-1751" y="-1198">
+			<label kind="invariant" x="-1761" y="-1181">y &lt;= 1</label>
+		</location>
+		<location id="id15" x="-2005" y="-1342">
+			<name x="-2048" y="-1360">Red</name>
+		</location>
+		<location id="id16" x="-1504" y="-1343">
+			<name x="-1487" y="-1368">Green</name>
+			<label kind="invariant" x="-1487" y="-1343">y&lt;=30</label>
+		</location>
+		<location id="id17" x="-1632" y="-1343">
+			<label kind="invariant" x="-1642" y="-1326">y &lt;= 1</label>
+		</location>
+		<location id="id18" x="-1751" y="-1343">
+			<name x="-1768" y="-1385">Yellow</name>
+			<label kind="invariant" x="-1761" y="-1326">y &lt;= 5</label>
+		</location>
+		<location id="id19" x="-1878" y="-1343">
+			<label kind="invariant" x="-1888" y="-1326">y &lt;= 1</label>
+		</location>
+		<init ref="id15"/>
+		<transition>
+			<source ref="id16"/>
+			<target ref="id16"/>
+			<label kind="synchronisation" x="-1156" y="-1368">s2detected?</label>
+			<label kind="assignment" x="-1147" y="-1351">y := 0</label>
+			<nail x="-1504" y="-1181"/>
+			<nail x="-1156" y="-1343"/>
+			<nail x="-1504" y="-1504"/>
+		</transition>
+		<transition>
+			<source ref="id16"/>
+			<target ref="id16"/>
+			<label kind="guard" x="-1275" y="-1351">TL2 &gt; TL1</label>
+			<label kind="synchronisation" x="-1283" y="-1368">s1detected?</label>
+			<label kind="assignment" x="-1266" y="-1334">y := 0</label>
+			<nail x="-1504" y="-1232"/>
+			<nail x="-1283" y="-1343"/>
+			<nail x="-1504" y="-1453"/>
+		</transition>
+		<transition>
+			<source ref="id16"/>
+			<target ref="id16"/>
+			<label kind="guard" x="-1394" y="-1351">TL2 &gt; 0</label>
+			<label kind="synchronisation" x="-1402" y="-1368">s2returned!</label>
+			<label kind="assignment" x="-1385" y="-1334">y:=0</label>
+			<nail x="-1504" y="-1292"/>
+			<nail x="-1394" y="-1343"/>
+			<nail x="-1504" y="-1402"/>
+		</transition>
+		<transition>
+			<source ref="id15"/>
+			<target ref="id14"/>
+			<label kind="synchronisation" x="-1955" y="-1266">s1changed?</label>
+			<label kind="assignment" x="-1929" y="-1249">y:=0</label>
+		</transition>
+		<transition>
+			<source ref="id14"/>
+			<target ref="id16"/>
+			<label kind="synchronisation" x="-1623" y="-1266">s2returned!</label>
+			<label kind="assignment" x="-1606" y="-1249">y:=0</label>
+		</transition>
+		<transition>
+			<source ref="id16"/>
+			<target ref="id17"/>
+			<label kind="guard" x="-1598" y="-1411">TL2 &lt;= TL1</label>
+			<label kind="synchronisation" x="-1598" y="-1428">s1detected?</label>
+			<label kind="assignment" x="-1581" y="-1377">y:=0</label>
+			<nail x="-1564" y="-1394"/>
+		</transition>
+		<transition>
+			<source ref="id17"/>
+			<target ref="id18"/>
+			<label kind="assignment" x="-1708" y="-1385">y:=0</label>
+			<nail x="-1691" y="-1394"/>
+		</transition>
+		<transition>
+			<source ref="id18"/>
+			<target ref="id19"/>
+			<label kind="assignment" x="-1827" y="-1385">y:=0</label>
+			<nail x="-1810" y="-1394"/>
+		</transition>
+		<transition>
+			<source ref="id19"/>
+			<target ref="id15"/>
+			<label kind="synchronisation" x="-1972" y="-1411">s2changed!</label>
+			<nail x="-1938" y="-1394"/>
+		</transition>
+	</template>
+	<system>system Sensor1, Sensor2, S1, S2;</system>
+	<queries>
+		<query>
+			<formula>A&lt;&gt;(Sensor1.High and Sensor2.None imply S1.Green)</formula>
+			<comment>10) If Sensor1 detects high traffic and the others detect no traffic at all, then S1 will be Green</comment>
+		</query>
+		<query>
+			<formula>A&lt;&gt;(Sensor2.High and Sensor1.None imply S2.Green)</formula>
+			<comment>9) If Sensor2 detects high traffic and the others detect no traffic at all, then S2 will be Green</comment>
+		</query>
+		<query>
+			<formula>A[](S1.Red imply not S2.Red)</formula>
+			<comment>8) S1 and S2 are never Red simultaneously.</comment>
+		</query>
+		<query>
+			<formula>S2.Yellow --&gt; S2.Red</formula>
+			<comment>7) If S2 is yellow then eventually it will turn Red</comment>
+		</query>
+		<query>
+			<formula>S1.Yellow --&gt; S1.Red</formula>
+			<comment>6) If S1 is yellow then eventually it will turn Red</comment>
+		</query>
+		<query>
+			<formula>Sensor2.Car --&gt; S2.Green</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>Sensor1.Car --&gt; S1.Green</formula>
+			<comment>5) If there are cars waiting they will eventually have green light.</comment>
+		</query>
+		<query>
+			<formula>A[](S1.Green imply not S2.Green)</formula>
+			<comment>4) The minor-road and major-road lights cannot be green at the same time.</comment>
+		</query>
+		<query>
+			<formula>A[](not deadlock)</formula>
+			<comment>3) The system never enters in a deadlock state.</comment>
+		</query>
+		<query>
+			<formula>E&lt;&gt;(S1.Red)</formula>
+			<comment>2) The major-road light can go red.</comment>
+		</query>
+		<query>
+			<formula>E&lt;&gt;(S2.Green)</formula>
+			<comment>1) The minor-road light can go green.</comment>
+		</query>
+	</queries>
+</nta>
