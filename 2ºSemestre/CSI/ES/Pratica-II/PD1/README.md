@@ -14,26 +14,23 @@
  * Rui Cardoso([@Obsessi0n](https://github.com/Obsessi0n))
 
 
-## 3. Projetos de tipo 3 - Sistema de identificação eletrónica
 
-O [Regulamento eIDAS](https://eur-lex.europa.eu/legal-content/PT/TXT/PDF/?uri=CELEX:32014R0910&from=ga) (Regulamento (UE) n.o 910/2014 do Parlamento Europeu e do Conselho
-de 23 de julho de 2014
-relativo à identificação eletrónica e aos serviços de confiança para as transações eletrónicas no
-mercado interno e que revoga a Diretiva 1999/93/CE), no seu Capítulo II (Identificação Eletrónica), define os critérios de elegibilidade para notificação dos sistemas de identificação eletrónica, assim como os níveis de garantia dos mesmos ("reduzido", "substancial" e "elevado"). Nesse âmbito, Portugal já tem dois sistemas de identificação eletrónica aprovados, pela [_Cooperation Network_](https://ec.europa.eu/cefdigital/wiki/display/EIDCOMMUNITY/Cooperation+Network+Resources), com nível de garantia "elevado", de acordo com os requisitos da [COMMISSION IMPLEMENTING REGULATION (CIR) (EU) 2015/1502
-of 8 September 2015
-on setting out minimum technical specifications and procedures for assurance levels for electronic identification means pursuant to Article 8(3) of Regulation (EU) No 910/2014 of the European Parliament and of the Council on electronic identification and trust services for electronic transactions in the internal market](https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32015R1502):
+## 2. Projetos do tipo 2 - Cofre digital
 
-+ Cartão de Cidadão, [publicado a 28/02/2019](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52019XC0228(01));
-+ Chave Móvel Digital, [publicado a 08/04/2020](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:JOC_2020_116_R_0005).
+O objetivo deste projeto é disponibilizar um serviço de cofre digital, garantindo que os documentos lá depositados só são acedidos pelos seus titulares.
 
+O cofre digital tem as seguintes operações para o exterior:
 
-### 3.1 Tema a analisar 
++ depositar documento (qualquer tipo de documento), sendo que o depositante tem que identificar quem lhe pode aceder. Como resultado é devolvido ao depositante o hash do documento depositado e a chave de decifra do mesmo, cifrada com a chave pública do depositante. Caso o depositante identifique que o documento só pode ser acedido por várias pessoas em conjunto (n pessoas de um conjunto de m pessoas, com n <= m), essa chave de decifra é partida pelas m pessoas (utilize o esquema de Shamir para partilha de segredo que iremos ver numa das próximas aulas teóricas) e fornecida a cada uma, cifrada com a chave pública de cada uma.
++ fornecer documento, desde que seja pedido pelo(s) depositante(s) que lhe podem aceder, e fornecida a chave correta de decifra (já decifrada pela chave privada do depositante).
 
-Várias entidades portuguesas querem que o seu sistema de autenticação seja aprovada como sistema de identificação eletrónica, e cabe-lhe a si justificar, o nível de garantia para cada uma das especificações técnicas e procedimentos elencadas no anexo do CIR 2015/1502, assim como o nível de garantia máximo que a autenticação no serviço poderia obter.
+Internamente, e como atua como fiel depositário do que lhe é confiado, o cofre digital gera a hash do documento e cifra-o, guardando apenas o par (hash, documento cifrado). A chave de cifra é única para cada documento e não é guardada, mas é devolvida ao(s) depositante(s), conforme descrito na operação de depositar.
+Para fornecer o documento, o cofre digital tem que receber a chave de decifra (ou as várias componentes da mesma, caso só seja possível aceder por vários depositantes em conjunto), e só devolve o documento original caso o consiga decifrar. No caso de receber várias componentes da mesma, deve existir um mecanismo que permita que os vários depositantes forneçam a sua componente da chave sem necessitarem de a mostrar aos restantes depositantes.
 
-Nota: Utilize [este guia](Guidance_on_Levels_of_Assurance.docx) para o ajudar a perceber melhor cada um dos requisitos elencadas no anexo do CIR 2015/1502.
+### 2.1 Grupos (e linguagens a utilizar)
 
+Este projeto deve ser realizado pelos seguintes grupos:
 
-Tema a analisar por:
++ Grupo 3, em Java, utilizando o _provider_ da Sun, por omissão;
 
-+ Grupo 3 - entidade é um Banco (escolha o que preferir), e o sistema de autenticação é a app mobile do Banco;
+No relatório espera-se que explique as várias decisões tomadas em termos de estruturas de dados, operações existentes e bibliotecas utilizadas. Indique também de que modo é possível instalar e utilizar o código que desenvolveu.
