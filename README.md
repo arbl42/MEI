@@ -2,8 +2,7 @@
 
 Conjunto de projetos e respetivas classificações do 2º nível do meu percurso académico pessoal.
 
-### 4º Ano
-#### 1º Semestre
+## 4º Ano - 1º Semestre
 
  - [CP](https://github.com/AITK42/MEI/tree/main/1ºSemestre/CP)
  - [DAA](https://github.com/AITK42/MEI/tree/main/1ºSemestre/DAA)
@@ -13,7 +12,7 @@ Conjunto de projetos e respetivas classificações do 2º nível do meu percurso
    - [TP3](https://github.com/AITK42/MEI/tree/main/1ºSemestre/ESR/TP3)
  - [RAS](https://github.com/AITK42/MEI/tree/main/1ºSemestre/RAS) 
 
-#### 2º Semestre
+## 2º Semestre
 
 Perfis de Especialização: Criptografia e Segurança de Informação(CSI), Métodos Formais de Programação(MFP)
 
