@@ -16,7 +16,7 @@ Conjunto de projetos e respetivas classificações do 2º nível do meu percurso
 
 Perfis de Especialização: Criptografia e Segurança de Informação(CSI), Métodos Formais de Programação(MFP)
 
-  - [CSI](https://github.com/AITK42/MEI/tree/main/2ºSemestre/CSI):
+  - [CSI - Criptografia e Segurança de Informação](https://github.com/AITK42/MEI/tree/main/2ºSemestre/CSI):
     - [EC](https://github.com/AITK42/MEI/tree/main/2ºSemestre/CSI/EC):
       - [TP0](https://github.com/AITK42/MEI/tree/main/2ºSemestre/CSI/EC/TP0)
       - [TP1](https://github.com/AITK42/MEI/tree/main/2ºSemestre/CSI/EC/TP1)
@@ -32,7 +32,7 @@ Perfis de Especialização: Criptografia e Segurança de Informação(CSI), Mét
       - [TP3](https://github.com/AITK42/MEI/tree/main/2ºSemestre/CSI/TS/TP3)
   
   
-  - [MFP](https://github.com/AITK42/MEI/tree/main/2ºSemestre/MFP)
+  - [MFP - Métodos Formais de Programação](https://github.com/AITK42/MEI/tree/main/2ºSemestre/MFP)
     - [CSI](https://haslab.github.io/MFP/CSI/2122/index)
     - [PCF](https://github.com/AITK42/MEI/tree/main/2ºSemestre/MFP/PCF)
       - [TPC1](https://github.com/AITK42/MEI/tree/main/2ºSemestre/MFP/PCF/TPC1)
