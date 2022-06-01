@@ -6,7 +6,7 @@ Conjunto de projetos e respetivas classificações do 2º nível do meu percurso
 
  - [CP - Computação Paralela](https://github.com/AITK42/MEI/tree/main/1ºSemestre/CP)
  - [DAA - Dados e Aprendizagem Automática](https://github.com/AITK42/MEI/tree/main/1ºSemestre/DAA)
- - [ESR - Engenharia de Serviços e Rede](https://github.com/AITK42/MEI/tree/main/1ºSemestre/ESR):
+ - [ESR - Engenharia de Serviços em Rede](https://github.com/AITK42/MEI/tree/main/1ºSemestre/ESR):
    - [TP1](https://github.com/AITK42/MEI/tree/main/1ºSemestre/ESR/TP1)
    - [TP2](https://github.com/AITK42/MEI/tree/main/1ºSemestre/ESR/TP2)
    - [TP3](https://github.com/AITK42/MEI/tree/main/1ºSemestre/ESR/TP3)
