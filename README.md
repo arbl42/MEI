@@ -1,6 +1,6 @@
 # MEI - Mestrado em Engenharia Informática
 
-Conjunto de projetos e respetivas classificações do 2º nível do meu percurso académico pessoal.
+Conjunto de projetos e respetivas classificações do 2º grau do meu percurso académico pessoal.
 
 ## 4º Ano - 1º Semestre
 
