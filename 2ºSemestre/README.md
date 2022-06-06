@@ -33,7 +33,6 @@
   - [Fichas](https://github.com/AITK42/MEI/tree/main/2ºSemestre/CSI/TS/Fichas)
   - [TP1](https://github.com/AITK42/MEI/tree/main/2ºSemestre/CSI/TS/TP1)
   - [TP2](https://github.com/AITK42/MEI/tree/main/2ºSemestre/CSI/TS/TP2)
-  - [TP3](https://github.com/AITK42/MEI/tree/main/2ºSemestre/CSI/TS/TP3)
   
 
   
