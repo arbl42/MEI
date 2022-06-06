@@ -14,7 +14,19 @@ Conjunto de projetos e respetivas classificações do 2º grau do meu percurso a
 
 ## 2º Semestre
 
-Perfis de Especialização: Criptografia e Segurança de Informação(CSI), Métodos Formais de Programação(MFP)
+Perfis de Especialização:  Métodos Formais de Programação(MFP), Criptografia e Segurança de Informação(CSI)
+  
+  - [MFP - Métodos Formais de Programação](https://github.com/AITK42/MEI/tree/main/2ºSemestre/MFP)
+    - [CSI - Cálculo de Sistemas de Informação](https://haslab.github.io/MFP/CSI/2122/index)
+    - [PCF - Programação Ciber-Física](https://github.com/AITK42/MEI/tree/main/2ºSemestre/MFP/PCF):
+      - [TPC1](https://github.com/AITK42/MEI/tree/main/2ºSemestre/MFP/PCF/TPC1)
+      - [TPC2](https://github.com/AITK42/MEI/tree/main/2ºSemestre/MFP/PCF/TPC2)
+      - [TP1](https://github.com/AITK42/MEI/tree/main/2ºSemestre/MFP/PCF/TP1)
+      - TP2 
+    - [VF - Verificação Formal](https://github.com/AITK42/MEI/tree/main/2ºSemestre/MFP/VF):
+      - [Coq](https://github.com/AITK42/MEI/tree/main/2ºSemestre/MFP/VF/Coq)
+      - [Why3](https://github.com/AITK42/MEI/tree/main/2ºSemestre/MFP/VF/Why3)
+      - [TLA+](https://github.com/AITK42/MEI/tree/main/2ºSemestre/MFP/VF/TLA%2B)
 
   - [CSI - Criptografia e Segurança de Informação](https://github.com/AITK42/MEI/tree/main/2ºSemestre/CSI)
     - [EC - Estruturas Criptográficas](https://github.com/AITK42/MEI/tree/main/2ºSemestre/CSI/EC):
@@ -32,16 +44,6 @@ Perfis de Especialização: Criptografia e Segurança de Informação(CSI), Mét
       - [TP3](https://github.com/AITK42/MEI/tree/main/2ºSemestre/CSI/TS/TP3)
   
   
-  - [MFP - Métodos Formais de Programação](https://github.com/AITK42/MEI/tree/main/2ºSemestre/MFP)
-    - [CSI - Cálculo de Sistemas de Informação](https://haslab.github.io/MFP/CSI/2122/index)
-    - [PCF - Programação Ciber-Física](https://github.com/AITK42/MEI/tree/main/2ºSemestre/MFP/PCF):
-      - [TPC1](https://github.com/AITK42/MEI/tree/main/2ºSemestre/MFP/PCF/TPC1)
-      - [TPC2](https://github.com/AITK42/MEI/tree/main/2ºSemestre/MFP/PCF/TPC2)
-      - [TP1](https://github.com/AITK42/MEI/tree/main/2ºSemestre/MFP/PCF/TP1)
-      - TP2 
-    - [VF - Verificação Formal](https://github.com/AITK42/MEI/tree/main/2ºSemestre/MFP/VF):
-      - [Coq](https://github.com/AITK42/MEI/tree/main/2ºSemestre/MFP/VF/Coq)
-      - [Why3](https://github.com/AITK42/MEI/tree/main/2ºSemestre/MFP/VF/Why3)
-      - [TLA+](https://github.com/AITK42/MEI/tree/main/2ºSemestre/MFP/VF/TLA%2B)
+
   
 
