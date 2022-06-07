@@ -2,7 +2,8 @@
 
 Conjunto de projetos e respetivas classificações do 2º grau do meu percurso académico pessoal, assim como os respetivos autores e classificações. 
 
-## 4º Ano - 1º Semestre
+## 4º Ano 
+### 1º Semestre
 
  - [CP - Computação Paralela](https://github.com/AITK42/MEI/tree/main/1ºSemestre/CP)
  - [DAA - Dados e Aprendizagem Automática](https://github.com/AITK42/MEI/tree/main/1ºSemestre/DAA)
@@ -12,7 +13,7 @@ Conjunto de projetos e respetivas classificações do 2º grau do meu percurso a
    - [TP3](https://github.com/AITK42/MEI/tree/main/1ºSemestre/ESR/TP3)
  - [RAS - Requisitos de Arquitetura e Software](https://github.com/AITK42/MEI/tree/main/1ºSemestre/RAS) 
 
-## 2º Semestre
+### 2º Semestre
 
 Perfis de Especialização:  Métodos Formais de Programação(MFP), Criptografia e Segurança de Informação(CSI)
   
