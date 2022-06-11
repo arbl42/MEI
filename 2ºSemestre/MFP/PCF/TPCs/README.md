@@ -1,7 +1,7 @@
 # TPC1
 
-## Author
+## Autor
  * Ariana Lousada([@AITK42](https://github.com/AITK42))
 
-#### Classification
- * - 
+#### Classificação global
+ * 12/20
