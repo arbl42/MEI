@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout.html}" th:with="currentPage=#{label.userArea}">
+	<body>
+        <div layout:fragment="content">
+		
+			<div th:replace="fragment/disclaimer-mock-tsp::mock-tsp-warn"></div>
+
+            <p>Supplying your phone number is completely optional. 
+                However, after you submit your phone number, it will remain on our databases indefinitely.
+                Your phone number will be used for signing with your CMD (Chave Móvel Digital).</p>
+
+            <form method="post" enctype="multipart/form-data" th:action="@{/user-area}" th:object="${user}">
+                <div th:replace="fragment/fields::field-phone-number"></div>
+
+                <div class="form-group row">
+                    <div class="offset-sm-3 col-sm-9">
+                        <button type="submit" class="btn btn-primary" id="submit-button" th:text="#{label.submit}"></button>
+                        <button type="reset" class="btn btn-secondary" th:text="#{label.clear}"></button>
+                    </div>
+                </div>
+            </form>
+
+            <form method="post" th:action="@{/logout}">
+                <div class="form-group row">
+                    <div class="offset-sm-3 col-sm-9">
+                        <button type="submit" class="btn btn-info" th:text="#{label.logout}"></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

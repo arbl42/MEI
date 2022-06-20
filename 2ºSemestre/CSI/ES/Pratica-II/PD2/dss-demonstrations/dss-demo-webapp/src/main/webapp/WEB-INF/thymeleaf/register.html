@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout.html}" th:with="currentPage=#{label.register}">
+	<body>
+        <div layout:fragment="content">
+		
+			<div th:replace="fragment/disclaimer-mock-tsp::mock-tsp-warn"></div>
+
+            <form method="post" enctype="multipart/form-data" th:action="@{/register}" th:object="${user}">
+
+                <div class="col-xs-4" th:if="${param.error}">
+                    <p class="text-danger">
+                        Username already exists.
+                    </p>
+                </div>
+
+                <div th:replace="fragment/fields::field-username"></div>
+
+                <div th:replace="fragment/fields::field-password"></div>
+
+                <div class="form-group row">
+                    <div class="offset-sm-3 col-sm-9">
+                        <button type="submit" class="btn btn-primary" id="submit-button" th:text="#{label.submit}"></button>
+                        <button type="reset" class="btn btn-secondary" th:text="#{label.clear}"></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

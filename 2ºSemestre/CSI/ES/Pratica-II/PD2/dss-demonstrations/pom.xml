@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>eu.europa.ec.joinup.sd-dss</groupId>
+	<artifactId>dss-demos</artifactId>
+	<version>5.10</version>
+	<packaging>pom</packaging>
+	<name>Digital Signature Services - demonstrations</name>
+
+	<developers>
+		<developer>
+			<id>naramski</id>
+			<name>David Naramski</name>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</developer>
+		<developer>
+			<id>vandenbroucke</id>
+			<name>Pierrick Vandenbroucke</name>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</developer>
+		<developer>
+			<id>beliakov</id>
+			<name>Aleksandr Beliakov</name>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<properties>
+		<project.source.version>1.8</project.source.version>
+		<project.encoding>UTF-8</project.encoding>
+
+		<!-- We suppose that we have : -->
+		<!-- 	/root-folder/ -->
+		<!-- 	/root-folder/dss/... -->
+		<!-- 	/root-folder/dss-demos/... -->
+		<dss.framework.version>5.10</dss.framework.version>
+		<dss.framework.root.directory>${project.parent.basedir}/../dss</dss.framework.root.directory>
+
+		<slf4j.version>1.7.35</slf4j.version>
+		<logback-classic.version>1.2.10</logback-classic.version>
+
+		<cxf.version>3.5.0</cxf.version>
+		<swagger-ui.version>4.2.1</swagger-ui.version>
+		<cxf.version>3.4.3</cxf.version>
+		<org.springframework.version>5.3.18</org.springframework.version>
+		<spring.version>5.3.18</spring.version>
+		<spring-security.version>5.6.2</spring-security.version>
+		<tomcat-jasper.version>9.0.12</tomcat-jasper.version>
+		<servlet-api.version>3.0-alpha-1</servlet-api.version>
+		<jstl.version>1.2</jstl.version>
+		<mysql-connector-java.version>8.0.11</mysql-connector-java.version>
+		<thymeleaf-spring5.version>3.0.14.RELEASE</thymeleaf-spring5.version>
+		<thymeleaf-layout-dialect.version>3.0.0</thymeleaf-layout-dialect.version>
+		<jackson-jaxrs-json-provider.version>2.13.2</jackson-jaxrs-json-provider.version>
+		<jackson-databind.version>2.13.2.2</jackson-databind.version> <!-- To be used while jackson is not updated -->
+		<commons-fileupload.version>1.4</commons-fileupload.version>
+		<commons-io.version>2.11.0</commons-io.version>
+		<hikaricp.version>4.0.3</hikaricp.version>
+		<freemarker.version>2.3.31</freemarker.version>
+		<hsqldb.version>2.5.2</hsqldb.version>
+		<fop-core.version>2.7</fop-core.version>
+		<spring-boot-starter-security.version>2.7.0</spring-boot-starter-security.version>
+		<spring-security-test.version>5.7.1</spring-security-test.version>
+		<thymeleaf-extras-springsecurity5.version>3.0.4.RELEASE</thymeleaf-extras-springsecurity5.version>
+		<!-- stackoverflow -->
+		<!--<spring-boot-starter-thymeleaf.version>2.7.0</spring-boot-starter-thymeleaf.version>
+		-->
+		<!--<spring-boot-starter-web.version></spring-boot-starter-web.version>
+		<spring-boot-starter-test.version></spring-boot-starter-test.version>-->
+		<nexu.version>1.22</nexu.version>
+		
+		<junit.jupiter.version>5.8.2</junit.jupiter.version>
+	</properties>
+
+	<licenses>
+		<license>
+			<name>GNU Lesser General Public License</name>
+			<url>https://www.gnu.org/licenses/lgpl-2.1.html</url>
+		</license>
+		<!--<license>
+			<comments>If your project is including the module 'sscd-mocca-adapter', it inherits the MOCCA license</comments>
+			<name>EUPL v1.1</name>
+			<url>https://joinup.ec.europa.eu/collection/eupl/eupl-text-11-12</url>
+		</license>-->
+	</licenses>
+
+	<modules>
+		<module>dss-mock-tsa</module>
+		<!--<module>dss-standalone-app</module>
+		<module>dss-standalone-app-package</module>-->
+		<module>dss-demo-webapp</module>
+		<module>dss-demo-bundle</module>        
+		<!--<module>sscd-mocca-adapter</module>
+		<module>dss-rest-doc-generation</module>-->
+	</modules>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<encoding>${project.encoding}</encoding>
+					<source>${project.source.version}</source>
+					<target>${project.source.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<id>enforce</id>
+				        <goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+                				<banDuplicatePomDependencyVersions />
+								<bannedDependencies>
+									<excludes>
+										<exclude>xalan:xalan</exclude>
+									</excludes>
+								</bannedDependencies>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.9.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>3.2.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>2.5.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>3.2.0</version>
+					<configuration>
+						<encoding>${project.encoding}</encoding>
+						<nonFilteredFileExtensions><!-- Avoid to modify keystore -->
+							<nonFilteredFileExtension>jks</nonFilteredFileExtension>
+							<nonFilteredFileExtension>p12</nonFilteredFileExtension>
+							<nonFilteredFileExtension>ttf</nonFilteredFileExtension>
+						</nonFilteredFileExtensions>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>3.2.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-shade-plugin</artifactId>
+					<version>3.2.4</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>3.3.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>2.5.3</version>
+					<configuration>
+						<autoVersionSubmodules>true</autoVersionSubmodules>
+						<tagNameFormat>@{project.version}</tagNameFormat>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>3.3.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>2.8.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>2.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>3.0.0-M4</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<scm>
+		<url>https://ec.europa.eu/digital-building-blocks/code/scm/esig/dss-demos.git</url>
+		<connection>scm:git:https://ec.europa.eu/digital-building-blocks/code/scm/esig/dss-demos.git</connection>
+		<developerConnection>scm:git:https://ec.europa.eu/digital-building-blocks/code/scm/esig/dss-demos.git</developerConnection>
+		<tag>5.10</tag>
+	</scm>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>eu.europa.ec.joinup.sd-dss</groupId>
+				<artifactId>dss-mock-tsa</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>eu.europa.ec.joinup.sd-dss</groupId>
+				<artifactId>dss-demo-webapp</artifactId>
+				<type>war</type>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>eu.europa.ec.joinup.sd-dss</groupId>
+				<artifactId>dss-standalone-app</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>eu.europa.ec.joinup.sd-dss</groupId>
+				<artifactId>dss-standalone-app-package</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+                <groupId>eu.europa.ec.joinup.sd-dss</groupId>
+                <artifactId>sscd-mocca-adapter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+			<!-- DSS Framework dependencies -->
+
+			<dependency>
+				<groupId>eu.europa.ec.joinup.sd-dss</groupId>
+				<artifactId>dss-bom</artifactId>
+				<version>${dss.framework.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- Public Dependencies -->
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context-support</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-oxm</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+		        <groupId>org.springframework.security</groupId>
+		        <artifactId>spring-security-web</artifactId>
+		        <version>${spring-security.version}</version>
+		    </dependency>
+		    <dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-config</artifactId>
+				<version>${spring-security.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>${spring.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>${commons-fileupload.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons-io.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>org.freemarker</groupId>
+			    <artifactId>freemarker</artifactId>
+			    <version>${freemarker.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.xmlgraphics</groupId>
+				<artifactId>fop-core</artifactId>
+				<version>${fop-core.version}</version>
+			</dependency>
+
+			<!-- Base de dados -->
+			<dependency>  
+				<groupId>org.apache.tomcat</groupId>  
+				<artifactId>tomcat-jasper</artifactId>  
+				<version>${tomcat-jasper.version}</version>  
+			</dependency>
+			<dependency>    
+				<groupId>javax.servlet</groupId>    
+				<artifactId>servlet-api</artifactId>    
+				<version>${servlet-api.version}</version>    
+			</dependency>
+			<dependency>  
+				<groupId>javax.servlet</groupId>  
+				<artifactId>jstl</artifactId>  
+				<version>${jstl.version}</version>  
+			</dependency>
+			<dependency>  
+				<groupId>mysql</groupId>  
+				<artifactId>mysql-connector-java</artifactId>  
+				<version>${mysql-connector-java.version}</version>  
+			</dependency>
+			
+			
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-frontend-jaxws</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-transports-http</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-features-logging</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>
+			<dependency>
+			  <groupId>org.apache.cxf</groupId>
+			  <artifactId>cxf-rt-rs-service-description</artifactId> <!--  to access to wadl -->
+			  <version>${cxf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-ws-security</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>org.apache.cxf</groupId>
+			    <artifactId>cxf-rt-rs-client</artifactId>
+			    <version>${cxf.version}</version> 
+			    <scope>test</scope>
+			</dependency>
+			
+			<dependency>
+			    <groupId>org.apache.cxf</groupId>
+			    <artifactId>cxf-rt-rs-service-description-openapi-v3</artifactId>
+			    <version>${cxf.version}</version>
+			</dependency>
+			
+			<dependency>
+	            <groupId>org.webjars</groupId>
+	            <artifactId>swagger-ui</artifactId>
+	            <version>${swagger-ui.version}</version>
+	        </dependency>
+			
+
+			<dependency>
+				<groupId>com.fasterxml.jackson.jaxrs</groupId>
+				<artifactId>jackson-jaxrs-json-provider</artifactId>
+				<version>${jackson-jaxrs-json-provider.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${jackson-databind.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.zaxxer</groupId>
+				<artifactId>HikariCP</artifactId>
+				<version>${hikaricp.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hsqldb</groupId>
+				<artifactId>hsqldb</artifactId>
+				<version>${hsqldb.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.thymeleaf</groupId>
+				<artifactId>thymeleaf-spring5</artifactId>
+				<version>${thymeleaf-spring5.version}</version>
+			</dependency>
+				
+			<!-- Logger -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jul-to-slf4j</artifactId> <!-- Replaces java.util.Logging (see http://www.slf4j.org/images/legacy.png) -->
+				<version>${slf4j.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jcl-over-slf4j</artifactId> <!-- Replaces commons-logging -->
+				<version>${slf4j.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>log4j-over-slf4j</artifactId> <!-- Replaces log4j -->
+				<version>${slf4j.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-simple</artifactId>
+				<version>${slf4j.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>${logback-classic.version}</version>
+			</dependency>
+			
+			<dependency>
+			    <groupId>org.junit.jupiter</groupId>
+			    <artifactId>junit-jupiter-engine</artifactId>
+			    <version>${junit.jupiter.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>nz.net.ultraq.thymeleaf</groupId>
+			    <artifactId>thymeleaf-layout-dialect</artifactId>
+				<version>${thymeleaf-layout-dialect.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<repositories>
+		<repository>
+		  <id>cefdigital</id>
+		  <name>CEF Digital</name>
+		  <url>https://ec.europa.eu/digital-building-blocks/artifact/content/repositories/esignaturedss/</url>
+		</repository>
+	</repositories>
+
+	<distributionManagement>
+		<repository>
+			<id>cefdigital-nexus</id>
+			<url>https://ec.europa.eu/digital-building-blocks/artifact/content/repositories/esignaturedss</url>
+		</repository>
+		<snapshotRepository>
+			<id>cefdigital-nexus</id>
+			<url>https://ec.europa.eu/digital-building-blocks/artifact/content/repositories/esignaturedss-snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<issueManagement>
+		<system>JIRA</system>
+		<url>https://ec.europa.eu/digital-building-blocks/tracker/projects/DSS</url>
+		<!-- <url>https://esig-dss.atlassian.net/projects/DSS</url> Old issues -->
+	</issueManagement>
+
+	<profiles>
+
+		<profile>
+			<id>delivery</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<skip>true</skip>
+						</configuration>
+					</plugin>
+					<plugin>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>default-testCompile</id>
+								<phase>test-compile</phase>
+								<goals>
+									<goal>testCompile</goal>
+								</goals>
+								<configuration>
+									<skip>true</skip>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>owasp</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.owasp</groupId>
+						<artifactId>dependency-check-maven</artifactId>
+						<version>6.5.3</version>
+						<executions>
+							<execution>
+								<goals>
+									<goal>check</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>quick</id>
+			<properties>
+				<maven.test.skip>true</maven.test.skip>
+				<maven.javadoc.skip>true</maven.javadoc.skip>
+			</properties>
+		</profile>
+	</profiles>
+</project>
