@@ -1,4 +1,4 @@
-# TPC1
+# TPCs
 
 ## Autor
  * Ariana Lousada([@AITK42](https://github.com/AITK42))
