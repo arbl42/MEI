@@ -1,9 +1,5 @@
 # Trabalho Prático I - Cofre Digital
 
-### Apresentação
-
- * _
-
 ### Classificação
  
  * _
