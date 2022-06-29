@@ -1,9 +1,5 @@
 # Trabalho Prático II - Utilização/integração de ferramentas disponibilizadas no âmbito do Digital Signature Services (DSS)
 
-### Apresentação
-
- * _
-
 ### Classificação
  
  * _
