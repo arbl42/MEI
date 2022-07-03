@@ -7,6 +7,6 @@ Conjunto de fichas de trabalho da prática-I da unidade curricular Engenharia de
  * 11.33/20
 
 ### Autores
- * Ariana Lousada([@AITK42](https://github.com/AITK42))
- * Luís Carneiro([@lmrcarneiro](https://github.com/lmrcarneiro))
- * Rui Cardoso([@Obsessi0n](https://github.com/Obsessi0n))
+ * [Ariana Lousada](https://github.com/AITK42))
+ * [Luís Carneiro](https://github.com/lmrcarneiro)
+ * [Rui Cardoso](https://github.com/Obsessi0n)
