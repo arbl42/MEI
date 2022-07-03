@@ -2,7 +2,7 @@
 
 ### Classificação
  
- * _
+ * 12.5/20
 
 ### Autores
  * Ariana Lousada([@AITK42](https://github.com/AITK42))
