@@ -6,8 +6,8 @@
  * 16.60/20
 
 ### Autores
-* Carlos Gomes([@CGDEX](https://github.com/CGDEX))
-* Ariana Lousada([@AITK42](https://github.com/AITK42))
-* Tiago Sousa([@Existency](https://github.com/Existency))
-* Márcia Teixeira([@teixeiramarcia](https://github.com/teixeiramarcia))
+* [Carlos Gomes](https://github.com/CGDEX)
+* [Ariana Lousada](https://github.com/AITK42)
+* [Tiago Sousa](https://github.com/Existency)
+* [Márcia Teixeira](https://github.com/teixeiramarcia)
  
