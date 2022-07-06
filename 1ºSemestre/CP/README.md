@@ -3,7 +3,7 @@
 
 ### Apresentação
 
- * https://docs.google.com/presentation/d/1FGzm-rJn_qnC_tXJDoWmZISvNn4XRI6Krizx1u1YJ4Q/edit#slide=id.p
+ * https://docs.google.com/presentation/d/1FGzm-rJn_qnC_tXJDoWmZISvNn4XRI6Krizx1u1YJ4Q/edit?usp=sharing
 
 ### Classificação
  
