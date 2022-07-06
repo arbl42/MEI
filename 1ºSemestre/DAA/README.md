@@ -2,7 +2,7 @@
 
 ### Apresentação
 
- * https://docs.google.com/presentation/d/1zT3TVBrwgkl3OJFch4afAQyzkS3NasD2FZcjkZtQumg/edit#slide=id.g8794a74c9d_0_2475
+ * https://docs.google.com/presentation/d/1zT3TVBrwgkl3OJFch4afAQyzkS3NasD2FZcjkZtQumg/edit?usp=sharing
 
 ### Classificação
  
