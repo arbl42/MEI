@@ -2,7 +2,7 @@
 
 Conjunto de projetos e respetivas classificações do 2º grau do meu percurso académico pessoal, assim como os respetivos autores e classificações. 
 
-## 4º Ano 
+## 1º Ano 
 ### 1º Semestre
 
  - [CP - Computação Paralela](https://github.com/AITK42/MEI/tree/main/1ºSemestre/CP)
