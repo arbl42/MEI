@@ -43,6 +43,9 @@ Perfis de Especialização:  Métodos Formais de Programação(MFP), Criptografi
       - [TP1](https://github.com/AITK42/MEI/tree/main/2ºSemestre/CSI/TS/TP1)
       - [TP2](https://github.com/AITK42/MEI/tree/main/2ºSemestre/CSI/TS/TP2)
   
+  ## 2º Ano
+  #### Projeto de Informática
+   - [Generation of Synthetic Datasets for Sign Language](https://github.com/LuisPereira23/PI)
   
 
   
