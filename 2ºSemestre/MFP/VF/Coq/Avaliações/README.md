@@ -1,6 +1,6 @@
 # Teste - Ferramenta Coq
 
-## Autora
+#### Autor
  * [Ariana Lousada](https://github.com/arbl42)
 
 #### Classificação
