@@ -1,7 +1,7 @@
 # Teste - Ferramenta Why3
 
-## Author
- * Ariana Lousada([@AITK42](https://github.com/AITK42))
+## Autor
+ * [Ariana Lousada](https://github.com/arbl42))
 
-#### Classification
+#### Classificação
  * 15/20
