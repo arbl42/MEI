@@ -1,7 +1,7 @@
 # Teste - Ferramenta Coq
 
-## Author
- * Ariana Lousada([@AITK42](https://github.com/AITK42))
+## Autora
+ * [Ariana Lousada](https://github.com/arbl42)
 
-#### Classification
+#### Classificação
  * 12.2/20
