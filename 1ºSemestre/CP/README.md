@@ -7,5 +7,5 @@
 
 ### Autores
  * [Marco Pereira](https://github.com/pereiramarco)
- * [Ariana Lousada](https://github.com/AITK42)
+ * [Ariana Lousada](https://github.com/arbl42)
  
