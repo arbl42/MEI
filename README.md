@@ -11,7 +11,8 @@ Conjunto de projetos e respetivas classificações do 2º grau do meu percurso a
    - [TP1](https://github.com/AITK42/MEI/tree/main/1ºSemestre/ESR/TP1)
    - [TP2](https://github.com/AITK42/MEI/tree/main/1ºSemestre/ESR/TP2)
    - [TP3](https://github.com/AITK42/MEI/tree/main/1ºSemestre/ESR/TP3)
- - [RAS - Requisitos de Arquitetura e Software](https://github.com/AITK42/MEI/tree/main/1ºSemestre/RAS) 
+ - [RAS - Requisitos de Arquitetura e Software](https://github.com/AITK42/MEI/tree/main/1ºSemestre/RAS)
+ - [ASCN - Aplicações e Serviços de Computação em Nuvem](https://github.com/AITK42/MEI/tree/main/1ºSemestre/ASCN) 
 
 ### 2º Semestre
 
