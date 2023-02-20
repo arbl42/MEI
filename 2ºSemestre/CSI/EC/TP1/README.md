@@ -1,8 +1,8 @@
 # TP1
 
-### Authors
+### Autores
  * [Ariana Lousada](https://github.com/arbl42)
  * [Cláudio Moreira](https://github.com/201709211)
 
-#### Classification
+#### Classificaç
  * 16/20 
