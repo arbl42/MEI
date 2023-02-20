@@ -1,7 +1,7 @@
 # TP2 - Modelling and analysis of a cyber-physical system(with monads)
 
 ## Autores
- * [Ariana Lousada](https://github.com/AITK42)
+ * [Ariana Lousada](https://github.com/arbl42)
  * [Ana Ribeiro](https://github.com/AnaPaulaMR)
  
 #### Classificação
