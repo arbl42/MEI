@@ -1,7 +1,7 @@
 # TPCs
 
 ## Autor
- * Ariana Lousada([@AITK42](https://github.com/AITK42))
+ * [Ariana Lousada](https://github.com/arbl42))
 
 #### Classificação global
  * 12/20
